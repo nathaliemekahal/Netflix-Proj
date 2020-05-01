@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+​
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+​
+    <title>Netflix</title>
+    <style>
+        body{
+            background-color: #1C1C1C  ;
+        }
+        .row{
+          color: white;
+        }
+        .edit-profile{
+          position: absolute;
+          top:auto;
+        }
+        .iconProfile img{
+          position: absolute;
+          
+        }
+
+        .savePreference{
+          padding: 1px;
+          position: absolute;
+
+        }
+
+        .btn {
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          padding: 2px;
+          margin: 3px;
+          font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        #formName{
+          background-color: grey;
+          color: white;
+        }
+
+        .custom-select{
+          background-color: black;
+        }
+        .check{
+        color:white;
+     
+         }
+
+         .opt{
+           color:white;
+         }
+
+         ::placeholder{
+           color: white;
+         }
+         .opt2 ::placeholder{
+           color: white;
+         }
+         .checkBox{
+           height: 18px;
+         }
+         .opt3{
+           margin:10px;
+           float: left;
+         }
+         h5{
+           padding-top: 7px;
+         }
+
+         .btn{
+           padding: 2px px;
+         }
+
+         
+      
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+			<a class="navbar-brand" href="#"
+			  ></a>
+			<button
+			  class="navbar-toggler"
+			  type="button"
+			  data-toggle="collapse"
+			  data-target="#navbarSupportedContent"
+			  aria-controls="navbarSupportedContent"
+			  aria-expanded="false"
+			  aria-label="Toggle navigation"
+			>
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			  <ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						<img src="imgs/netflix-logo-png-2562.png" width="80px" alt="">
+					</a>
+				  </li>
+				<li class="nav-item ">
+				  <a class="nav-link" href="index.html"
+					>Home <span class="sr-only">(current)</span></a
+				  >
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="#">TV shows</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Movies</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#">Recently Added</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#">My List</a>
+				  </li>
+				
+			  </ul>
+			 
+			  <div id="search" class="nav-item">
+				<i class="fas fa-search"></i>
+			  </div>
+			  <div class="nav-item" style="color: white;">
+				<a class="nav-link">Children</a>
+			  </div>
+			  <div class="nav-item" style="color: white;" >
+				<i class="fas fa-bell"></i>
+			  </div>
+			  <div  class="nav-item mr-5" style="background-color: black;" >
+				<div class="d-flex">
+					<div class="dropdown mr-1">
+					  <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					  </div>
+					</div>
+					<div class="btn-group " style="background-color: black;">
+						
+					  <button type="button" style="color: black;"class="btn  dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+						<span class="sr-only">Toggle Dropdown</span>
+					  </button>
+					  <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+						
+						<a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
+						
+					</div>
+				  </div>
+			  </div>
+			  
+		  </nav>
+
+    <div class="container">
+      <div class="divHead row justify-content-center col-12">
+        <h1>Edit your profile</h1>
+        </div>
+      <div class="row justify-content-center mt-2 mb-3">
+
+      <div class="col-lg-2">
+        <img class="iconProfile img-responsive" src="imgs/blue-icon.png" width="80%">
+
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <input type="email" class="form-control opt2" id="formName" placeholder="Strive Student"><!--Can't change color of placeholder-->
+        </div>
+        <div class="language">
+          <div>
+            <h5>Language</h5>
+          </div>
+          <div class="checkLanguage check">
+            <select class="custom-select opt opt2 col-3">
+              <option selected></option>
+              <option value="1">Italian</option>
+              <option value="2">English</option>
+              <option value="3">French</option>
+            </select>
+          </div>
+          
+        </div>
+
+        <div class="allowedFilm">
+          <div>
+            <h5>Movies and Tv series</h5>
+          </div>
+          <div class="checkLanguage check">
+            <select class="custom-select opt">
+              <option selected>Age maturity levels</option>
+              <option value="1">For little kids</option>
+              <option value="2">For older kids</option>
+              <option value="3">All maturity levels</option>
+            </select>
+          </div>
+          
+        </div>
+
+      </div>
+      <div class="col col-lg-2">
+        <div class="form-check">
+          <input class="form-check-input checkBox" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            Kid?
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+
+      
+      <div class="savePreference row justify-content-center col-6"">
+
+        <div class="btn-group-wrap " role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-light btn-lg ">Save</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg">Cancel</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg">Remove</button>
+        </div>
+     
+    </div>
+    </div>
+    
+    </div>
+  </div>
+   
+
+​
+​
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

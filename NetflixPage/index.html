@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
-        <title>Bootstrap 4 Carousel with Multiple Items</title>
+        <title>Strivix</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
@@ -25,7 +25,20 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
-	<style>
+				<style>
+					#footerIcons{
+			font-size: 30px;
+			}
+			#footerIcons i{
+			margin: 0 10px;
+			color: #C1C1C1;
+			}
+			.footerContent p{
+			font-size: 15px;
+			color: #C1C1C1;
+			margin: 5px 5px;
+			/* margin-left: 5px; */
+			}
 		body{
             background-color: black;
         }
@@ -41,21 +54,32 @@
             margin-right: 25px;
         }
         .title-wrapper p{
-            
+			margin-left: 2rem;
             margin-bottom: 0.5rem;
-            font-size: 1.4vw;
+			font-size: 1.4vw;
+			color: white;
         }
         
-		.title-wrapper h3,p{
+		.title-wrapper h3{
 			color: white;
 			margin-left: 2rem;
 		}
 		footer {
-			position: absolute;
+			
 			bottom: 0;
 			width: 100%;
+			margin: 20px auto 0;
 
 			}
+		#search{
+			color:white
+		}
+			/* .wrap{
+				margin-left: 300px;
+				margin-right: 300px;
+			} */
+		
+
 	</style>
     </head>
 
@@ -104,17 +128,56 @@
 				
 			  </ul>
 			 
-			  <!-- <li class="nav-item">
-				<a class="nav-link" href="#">Search</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">Children</a>
-			  </li> -->
+			  <div id="search" class="nav-item">
+				<i class="fas fa-search"></i>
+			  </div>
+			  <div class="nav-item" style="color: white;">
+				<a class="nav-link">Children</a>
+			  </div>
+			  <div class="nav-item" style="color: white;" >
+				<i class="fas fa-bell"></i>
+			  </div>
+			  <div  class="nav-item mr-5" style="background-color: black;" >
+				<div class="d-flex">
+					<div class="dropdown mr-1">
+					  <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					  </div>
+					</div>
+					<div class="btn-group " style="background-color: black;">
+						<div class="ml-2"><img src="imgs/netflixpic.PNG" width="40px" height="40px" alt="">
+						
+						</div>
+					  <button type="button" style="color: white;"class="btn  dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+						<span class="sr-only">Toggle Dropdown</span>
+					  </button>
+					  <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+						<a class="dropdown-item" href="payment.html">Payment</a>
+						<a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
+						
+					</div>
+				  </div>
+			  </div>
+			  
 		  </nav>
 		  <div class="title-wrapper">
-			<h3>TV shows</h3>
+			  <div style="display: inline-flex;">
+			<h3 >TV shows</h3>
+			<div class="dropdown mr-1">
+				<button type="button" style="color: white;"class="btn btn-outline-dark ml- dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+				  Genres
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+				  <a class="dropdown-item" href="#">Action</a>
+				  <a class="dropdown-item" href="#">Another action</a>
+				  <a class="dropdown-item" href="#">Something else here</a>
+				</div>
+			</div>
+		</div>
 			<p>Trending Now</p>
-		  </div>
+	</div>
         <!-- Top content -->
         <div class="top-content">
         	<div class="container-fluid">
@@ -166,20 +229,55 @@
 	
 		<!-- Footer -->
 		<footer>
-			<div class="row" style="justify-content: center;">
-			<div class="card" style="background-color: black;">
-				<div class="card-header">
-				  Featured
-				</div>
-				<div class="card-body">
-				  <h5 class="card-title">Special title treatment</h5>
-				  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-				  <a href="#" class="btn btn-primary">Go somewhere</a>
+			<div class="wrap">
+			<div class="container ">
+				<div class="row ">
+				  <div class="col" id="footerIcons">
+					<i class="fab fa-facebook-square"></i>
+					<i class="fab fab fa-instagram"></i>
+					<i class="fab fa-twitter-square"></i>
+					<i class="fab fa-youtube"></i>
+				  </div>
 				</div>
 			  </div>
+			  <div class="container">
+				<div class="row">
+				  <div class="col footerContent">
+					<p>Audio and Subtitle</p>
+					<p>Media Center</p>
+					<p>Privacy</p>
+					<p>Contact Us</p>
+				  </div>
+				  <div class="col footerContent">
+					<p>Audio Description</p>
+					<p>Investor Relations</p>
+					<p>Legal Notices</p>
+				  </div>
+				  <div class="col footerContent">
+					<p>Help Center</p>
+					<p>Jobs</p>
+					<p>Cookie Preferences</p>
+				  </div>
+				  <div class="col footerContent">
+					<p>Gift Cards</p>
+					<p>Terms of Use</p>
+					<p>Corporate Information</p>
+				  </div>
+				</div>
+				<button type="button" class="btn btn-outline-dark my-3" style="color: #c1c1c1;">Service Code</button>
+				<p style="color: #c1c1c1; font-size: 15px;">&copy; 1997-2019 Netflix, Inc. {i-0d00fcda2fdf9c0de}</p>
+			  
+			  </div>
 			</div>
-		</footer>
 
+			</div>
+		  
+		
+			
+			</div>
+			<!-- Copyright -->
+		  
+		  </footer>
         <!-- Javascript -->
 		<script src="assets/js/jquery-3.3.1.min.js"></script>
 		<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
