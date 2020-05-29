@@ -89,3 +89,10 @@ padding-right:0!important;
     width: 255px;
     height: 183px;
 }
+/* .movie-name{
+   
+} */
+.movie-info{
+    display: flex;
+    flex-direction: column;
+}

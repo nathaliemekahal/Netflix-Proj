@@ -51,8 +51,20 @@ const editMovie = async (id, movieObj) => {
       method: "PUT",
       body: JSON.stringify(movieObj),
       headers: new Headers({
-        "Content-Type": "application/json",
-      }),
+        'Content-Type':'application/json',
+        'Authorization':'Basic '+encoded
+    }),
     });
     return response;
   };
+  const deleteMovie = async (id) => {
+    let response = await fetch(url + id, {
+      method: "DELETE",
+      headers: new Headers({
+        'Content-Type':'application/json',
+        'Authorization':'Basic '+encoded
+    })
+    });
+    return response;
+  };
+ 

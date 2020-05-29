@@ -430,6 +430,16 @@
                 
                 window.location.href = `backoffice.html?movieId=${id}`;
             };
+            const handleDelete= async()=>{
+                const response = await deleteMovie(id);
+                if (response.ok) {
+                alert("Event deleted successfully");
+                window.location.assign("index.html");
+                } else {
+                alert("Event has NOT been deleted successfully");
+                }
+
+            }
 
 			
 		  </script>
