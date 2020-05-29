@@ -390,45 +390,46 @@
 			</div>
 			<!-- Copyright -->
 		  
-		  </footer>
+            <div class="present-details">
+
+            </div>
+            </div>
+            <input
+                type="button"
+                class="btn btn-info"
+                value="EDIT"
+                onclick="handleEdit()"
+            />
+            <input
+                type="button"
+                class="btn btn-danger"
+                value="DELETE"
+                onclick="handleDelete()"
+            />
+            </div>
 
 		  <script>
-			//   let CategoryArray
-			  window.onload=async()=>{
-			  try{
-				  let movieCategories=await getMovies()
-				  let i
-				  movieCategories.forEach(async Category => {
-					
-					let body_ref=document.querySelector('#categoryTitles')
-					let newCategoryTitle=document.createElement('div')
-					newCategoryTitle.className+=` ${Category} new-category mt-2`
-					newCategoryTitle.innerHTML=`<h2>${Category}</h2>
-					`
-					body_ref.appendChild(newCategoryTitle)
-				
-					let carousel_wrapper=document.querySelector(`.${Category} `)
-					console.log(carousel_wrapper)
-					let categoryMovies=await getCategoryMovies(Category)
-					categoryMovies.forEach(movie=>{
-					console.log(movie)
-					carousel_wrapper.innerHTML=`
-					<h2>${Category}</h2>
-					<img class='carousel-img'src='${movie.imageUrl}'>
-					<a href='details.html?movieId=${movie._id}&movieCategory=${movie.category}'><span>${movie.name} <span> </a>`
-					
+            let id
+            
+			let selectedmovie
+            window.onload = async () => {
+            let urlParams = new URLSearchParams(window.location.search);
+            id = urlParams.get("movieId");
+            let category = urlParams.get("movieCategory");
+            let categoryMovies=await getCategoryMovies(category)
+            console.log(categoryMovies)
+            console.log(categoryMovies._d=id)
+            selectedmovie =  categoryMovies.filter(function(category) {
+            return category._id == id;
 
-					})
-					
-					
-					
-				  });
-
-			  }catch(err){
-				  alert(err)
-
-			  }
-			}
+                })
+                console.log(selectedmovie)
+                    
+            };
+            const handleEdit = () => {
+                
+                window.location.href = `backoffice.html?movieId=${id}`;
+            };
 
 			
 		  </script>

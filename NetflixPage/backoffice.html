@@ -11,78 +11,12 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link rel="stylesheet" href="styles.css">
 
         <!-- Favicon and touch icons -->
   
 
-				<style>
-					#footerIcons{
-			font-size: 30px;
-			}
-			#footerIcons i{
-			margin: 0 10px;
-			color: #C1C1C1;
-			}
-			.footerContent p{
-			font-size: 15px;
-			color: #C1C1C1;
-			margin: 5px 5px;
-			/* margin-left: 5px; */
-			}
-		body{
-            background-color: black;
-        }
-        .pinning-header .main-header .logo {
-            text-decoration: none;
-            font-size: 1.8em;
-            color: #E50914;
-            display: inline-block;
-            vertical-align: middle;
-            cursor: pointer;
-            margin-right: 5px;}
-            .pinning-header .main-header .logo {
-            margin-right: 25px;
-        }
-        .title-wrapper p{
-			margin-left: 2rem;
-            margin-bottom: 0.5rem;
-			font-size: 1.4vw;
-			color: white;
-        }
-        
-		.title-wrapper h3{
-			color: white;
-			margin-left: 2rem;
-		}
-		footer {
-			
-			bottom: 0;
-			width: 100%;
-			margin: 20px auto 0;
-
-			}
-		#search{
-			color:white
-		}
-			/* .wrap{
-				margin-left: 300px;
-				margin-right: 300px;
-			} */
-			img{
-
-   
-			max-width: 100%;
-			max-height: 100%;
-			}
-			.col-2{
-			padding-left:4px!important;
-			padding-right:0!important;
-			}
-			.images-row.row{
-				margin-left: 0px;
-				margin-right: 0px;
-			}
-	</style>
+				
     </head>
 
     <body>
@@ -111,7 +45,7 @@
 					</a>
 				  </li>
 				<li class="nav-item active">
-				  <a class="nav-link" href="#"
+				  <a class="nav-link" href="index.html"
 					>Home <span class="sr-only">(current)</span></a
 				  >
 				</li>
@@ -139,7 +73,7 @@
 			  <div class="nav-item" style="color: white;" >
 				<i class="fas fa-bell"></i>
 			  </div>
-			  <div  class="nav-item mr-5" style="background-color: black;" >
+			  <div  class="nav-item mr-5"  >
 				<div class="d-flex">
 					<div class="dropdown mr-1">
 					  <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
@@ -148,7 +82,7 @@
 						<a class="dropdown-item" href="#">Something else here</a>
 					  </div>
 					</div>
-					<div class="btn-group " style="background-color: black;">
+					<div class="btn-group " >
 						<div class="ml-2"><img src="imgs/netflixpic.PNG" width="40px" height="40px" alt="">
 						
 						</div>
@@ -164,7 +98,93 @@
 			  </div>
 			  
 		  </nav>
+
+		  <!-- form -->
+		  <div class="text-center text-white">
+			<h2>Add New Movie</h2>
+		  </div>
+		  <div class="container">
+		  <form class="text-white" onsubmit="handleSubmit()">
+			<!-- "name": "app test 1",
+			"description": "somthing longer",
+			"category": "drama",
+			"imageUrl": "https://drop.ndtv.com/TECH/product_database/images/2152017124957PM_635_nokia_3310.jpeg?downsize=*:420&output-quality=80", -->
+			  <div class="form-group">
+				<label for="name">Movie Name</label>
+				<input class="form-control" type="text" id="name" placeholder="Enter Movie's Name" required>
+	
+			  </div>
+			  <div class="form-group">
+				<label for="description">Movie Plot</label>
+				<input class="form-control" type="text" id="description" placeholder="Enter Movie's description" required>     
+			  </div>
+			  <div class="form-group">
+				<label for="category">Movie Category</label>
+				<input class="form-control" type="text" id="category" placeholder="Enter Movie's Brand" required>     
+			  </div>
+			  <div class="form-group">
+				<label for="imageUrl">Movie Image-URL</label>
+				<input class="form-control" type="url" id="imageUrl" placeholder="Enter Movie's Image-url" required>     
+			  </div>
+			 
+			  <div class="form-group">
+				<button class="btn btn-dark mt-3" id='submit-btn' type="submit">
+					Submit Movie
+				</button>
+			</div>
+		  
+		  </form>
+		</div>
+	
+		</div>
 		 
+
+		<script> 
+		let id;
+		window.onload=async()=>{
+			let urlParams = new URLSearchParams(window.location.search);
+			id = urlParams.get("movieId");
+			console.log(id)
+		
+			if (id) {
+				
+          console.log("ID IS PRESENT, FETCHING DETAILS", id);
+		  let movie = await getMovie(id);
+		  
+          console.log("EVENT DETAILS", movie);
+          document.querySelector("#name").value = movie.name;
+          document.querySelector("#description").value = movie.description;
+          document.querySelector("#category").value = movie.category;
+          document.querySelector("#imageUrl").value = movie.imageUrl
+        } else {
+          console.log("I WANT TO CREATE AN ELEMENT FROM SCRATCH");
+        }
+		}
+		handleSubmit=()=>{
+		event.preventDefault();
+        submitMovie();
+		}
+		submitMovie=async ()=>{
+
+
+        let myMovie= {
+          name: document.querySelector("#name").value,
+          description: document.querySelector("#description").value,
+          category: document.querySelector("#category").value,
+          imageUrl: document.querySelector("#imageUrl").value,
+        };
+        console.log("myMovie", myMovie);
+
+        let response;
+
+        if (id) {
+          response = await editMovie(id, myMovie);
+        } else {
+          response = await saveMovie(myMovie);
+		}
+		console.log(response)
+		}
+		</script>
 		<!-- Javascript -->
 		<script src="functions.js"></script>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
