@@ -12,6 +12,8 @@
         <!-- CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="./glide-3.4.1/dist/css/glide.core.min.css">
+    	<link rel="stylesheet" href="./glide-3.4.1/dist/css/glide.theme.min.css">
         <!-- Favicon and touch icons -->
   
 
@@ -189,188 +191,86 @@
 		  </footer>
 
 		  <script>
+			
 			//   let CategoryArray
 			  window.onload=async()=>{
-				// var i=0
-				// var imagecount=0
-			  try{
-				//   let CategoryArray=[]
-				  let movieCategories=await getMovies()
-				  console.log('Movie Categories',movieCategories)
+				
+				
 			
-				  let j=0
-				  let carousels_ref=document.querySelector('#carousels')
-				  movieCategories.forEach(async Category => {
-						let carousel_count=0
-						let item_nb=0
-						let newCategory_div=document.createElement('div')
-						newCategory_div.innerHTML= 
-						`<h1>${Category}</h1>
-						<div id="carousel-${Category}" class="carousel slide" data-ride="carousel">
-							<ol class="carousel-indicators">
-							<li data-target="#carousel-${Category}" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel-${Category}" data-slide-to="1"></li>
-							<li data-target="#carousel-${Category}" data-slide-to="2"></li>
-							</ol>
-							<div class="carousel-inner inner-${Category}">
-							</div>`
-						    carousels_ref.insertBefore(newCategory_div,carousels_ref.childNodes[carousel_count])
-						 
-						fillCarousel(Category)
-						
-					
-						// let newCarousel=document.createElement('div')
-						// newCarousel.innerHTML+=`
-							// <div id="carousel-${Category}" class="carousel slide" data-ride="carousel">
-							// <ol class="carousel-indicators">
-							// <li data-target="#carousel-${Category}" data-slide-to="0" class="active"></li>
-							// <li data-target="#carousel-${Category}" data-slide-to="1"></li>
-							// <li data-target="#carousel-${Category}" data-slide-to="2"></li>
-							// </ol>
-							// <div class="carousel-inner inner-${Category}"> </div>`
-						// carousels_ref.insertBefore(newCarousel, carousels_ref.childNodes[childcount])
-						// let categoryMovies=await getCategoryMovies(Category)
-						// console.log(categoryMovies)
-						// categoryMovies.forEach(movie=>{
-							
-							// imagecount++
-						
-							
-							// let item_nb=0
-					
-							// let carousel_inner_ref
-							// let row_ref
-							
-							// if(item_nb===0&&imagecount===1){
-							// 	 carousel_inner_ref=document.querySelector(`.inner-${Category}`)
-							// 	carousel_inner_ref.innerHTML=`
-								
-							// 	<div>${movie.category}</div>
-							// 	<div class="carousel-item-${Category}${item_nb} active">
-							// 		<div class="row row-${Category}${item_nb}" style="padding: 0%;">
-							// 			<div class="col-2">
-							// 				<a href='details.html?movieId=${movie._id}&movieCategory=${movie.category}'>
-							// 				<img src=${movie.imageUrl} class="img-responsive"></a>
-							// 			</div>
-							// 		</div>
-							//     </div>
-							// `
-							
-								
-							// }
-							// if(item_nb===0&&imagecount>1){
-							// 	row_ref=document.querySelector(`.row-${Category}${item_nb}`)
-								
-							// 	row_ref.innerHTML+=`
-							// 	<div class="col-2">
-							// 	<a href='details.html?movieId=${movie._id}&movieCategory=${movie.category}'><img src=${movie.imageUrl} 
-							// 	class="img-responsive"></a>
-							// 	</div>
-							// 				`
-							// 	imagecount++
-								
-							// }
-							
-							
-							
-							// if(item_nb>0){
-
-								
-							// 	let carousel_inner_ref=document.querySelector(`.inner-${Category}`)
-							// 	console.log(carousel_inner_ref)
-							// 	carousel_inner_ref.innerHTML+=`<div class="carousel-item-${Category}${item_nb}">
-							// 		<div class="row row-${Category}${item_nb}" style="padding: 0%;"> <img src=${movie.imageUrl} ></div>`
-	
-							// }
-							// item_nb++
-						
-					// if(!CategoryArray.includes(movie.category)){
-					// 	i++
-					// 	CategoryArray.push(movie.category)
-						
-						
-						
-						
-					// }
-					// else{
-					// 	console.log('category exits')
-					// }
-					// carousel_wrapper.innerHTML+=`
-					// <h2>${Category}</h2>
-					// <div class="movie-info">
-					// <img class='carousel-img'src='${movie.imageUrl}'>
-					// <a href='details.html?movieId=${movie._id}&movieCategory=${movie.category}'><h3 class="movie-name">${movie.name} </h3> </a>
-					// </div>	`
-
-					// })
-					
-					
-					
-				  });
-
+			  try{
+				  
+				let content = document.querySelector('#carousels')
+    // content.innerHTML = ''
+    let categories = await getMovies();
+    for(let i=0;i<categories.length;i++){
+      content.innerHTML += `
+      <div class="container-fluid series${i}" >
+        <p class="pt-3 pb-2 title" style="font-size: 20px; color: white;">${categories[i].toUpperCase()}</p>
+        <div class="glide ${i}">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+          </ul>
+          <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-chevron-left"></i></button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+      </div>
+      `
+      let movies = await getCategoryMovies(categories[i])
+      let categoryContainer = document.querySelector(`.series${i} .glide__slides`)
+      // console.log(categoryContainer)
+      if(movies.length >0){
+        for(let j=0;j<movies.length;j++){
+          categoryContainer.innerHTML +=`
+          <li class="glide__slide">
+            <div><a href="details.html?movieId=${movies[j]._id}&movieCategory=${categories[i]}"><img class="img-fluid" src="${movies[j].imageUrl}" alt=""></a></div>
+          </li>
+          `
+        }
+      }else{
+        document.querySelector(`#content series${i}`).classList.add('d-none')
+      }
+    }
+    // Mounting
+    var sliders = document.querySelectorAll('.glide');
+      for (var i = 0; i < sliders.length; i++) {
+        var glide = new Glide(sliders[i], {
+          type:'carousel',
+          perView:4,
+          gap: -90,
+          autoplay: 2000,
+          breakpoints:{
+            1200:{
+              perView :3
+            },
+            991:{
+              gap:10,
+              perView :2
+            }
+          }
+        });       
+        glide.mount();
+      }
 			  }catch(err){
 				  alert(err)
 
 			  }
 			}
 
-			const fillCarousel=async (Category)=>{
-				let carouselInner_ref
-				let item_number=0
-				let categoryMovies=await getCategoryMovies(Category)
-				for(let i=0;i<categoryMovies.length;i++){
-					carouselInner_ref=document.querySelector(` .inner-${Category}`)
-					if(i===0){
-						console.log('here 1')
-						carouselInner_ref.innerHTML=
-						`<div class="carousel-item-${Category}${item_number} active">
-									<div class="row row-${Category}${item_number}" style="padding: 0%;">
-										<div class="col-2">
-											<a href='details.html?movieId=${categoryMovies[i]._id}&movieCategory=${categoryMovies[i].category}'>
-											<img src=${categoryMovies[i].imageUrl} class="img-responsive"></a>
-										</div>
-										
-									</div>`
-						// fillinnerItem(Category,i,categoryMovies[i])
-							
+		
+		
 
-					}
-					if(i>0){
-						let carouselRow_refr=document.querySelector(`.row-${Category}${item_number}`)
-						console.log('here 2')
-						carouselRow_refr.innerHTML+=fillinnerItem(Category,i,categoryMovies[i])
-						if(i===6){
-							item_number++
-						}
-					}
-					// else if(i%6===0&&i!==0){
-					// 	carouselInner_ref.innerHTML=
-					// 	`<div class="carousel-item-${Category}${i} active">
-					// 				<div class="row row-${Category}${i}" style="padding: 0%;">
-					// 					<div class="col-2">
-					// 						<a href='details.html?movieId=${categoryMovies[i]._id}&movieCategory=${categoryMovies[i].category}'>
-					// 						<img src=${categoryMovies[i].imageUrl} class="img-responsive"></a>
-					// 					</div>
-					// 				</div>`
-					// }
-
-				}
-			}
-			const fillinnerItem=(Category,i,categoryMovie)=>{
-				// let carouselRow_ref=document.querySelector(` .row-${Category}${i}`)
-				// carouselRow_ref.innerHTML+=
-					return `<div class="col-2">
-											<a href='details.html?movieId=${categoryMovie._id}&movieCategory=${categoryMovie.category}'>
-											<img src=${categoryMovie.imageUrl} class="img-responsive"></a>
-										</div>`
-				// return carouselRow_ref.innerHTML
-
-			}
 
 			
 		  </script>
+		
 		<!-- Javascript -->
+		<script src="//cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+		<script src="./glide-3.4.1/dist/glide.min.js"></script>
 		<script src="functions.js"></script>
+		<script src="test.js"></script>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
